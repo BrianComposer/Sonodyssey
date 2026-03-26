@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Environments
+.venv/
+venv/
+env/
+.env
+.env.*
+
+# Build / packaging
+build/
+dist/
+*.egg-info/
+
+# Testing / lint
+.pytest_cache/
+.ruff_cache/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Outputs (generated artifacts)
+outputs/
+!outputs/.gitkeep
+
+# Data (local corpora)
+data/
+!data/.gitkeep
+
+# Audio files (safety)
+*.wav
+*.mp3
+*.flac

@@ -1,0 +1,71 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sonodyssey"
+version = "0.1.0"
+description = "Interactive WAV similarity explorer with FastAPI, Uvicorn, librosa, and a professional browser demo."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+  { name = "Brian Martínez-Rodríguez", email="info@brianmartinez.music" }
+]
+dependencies = [
+  "fastapi>=0.118.0,<1.0.0",
+  "uvicorn[standard]>=0.37.0,<1.0.0",
+  "numpy>=1.26.4,<3.0.0",
+  "scipy>=1.11.4,<2.0.0",
+  "librosa>=0.10.2.post1,<1.0.0",
+  "soundfile>=0.12.1,<1.0.0",
+  "scikit-learn>=1.5.2,<2.0.0",
+  "pydantic>=2.9.2,<3.0.0",
+  "python-multipart>=0.0.12,<1.0.0"
+]
+keywords = ["audio", "wav", "mir", "music-information-retrieval", "fastapi", "similarity"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.11",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Topic :: Multimedia :: Sound/Audio :: Analysis",
+  "Topic :: Scientific/Engineering :: Information Analysis"
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3.3,<9.0.0",
+  "ruff>=0.6.9,<1.0.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/BrianComposer/Sonodyssey"
+Repository = "https://github.com/BrianComposer/Sonodyssey"
+Issues = "https://github.com/BrianComposer/Sonodyssey/issues"
+
+
+[project.scripts]
+ace-build-index = "sonodyssey.api.cli:build_index_command"
+ace-serve = "sonodyssey.api.cli:serve_command"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+sonodyssey = [
+  "static/index.html",
+  "static/css/*.css",
+  "static/js/*.js"
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
