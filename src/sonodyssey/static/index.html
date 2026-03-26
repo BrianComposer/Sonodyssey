@@ -15,8 +15,8 @@
         <p class="eyebrow">Music Information Retrieval Demo</p>
         <h1>Audio Constellation Explorer</h1>
         <p class="subtitle">
-          Turn raw WAV files into an interactive similarity map with spectral constellation previews,
-          nearest-neighbor retrieval, and browser-based playback.
+          Navigate an abstract similarity universe built from WAV tracks. Select any star to hear it instantly,
+          reveal its local constellation, and inspect its spectral fingerprint without leaving the map.
         </p>
       </div>
       <div class="hero-actions">
@@ -30,37 +30,55 @@
         <div class="panel-header">
           <div>
             <h2>Similarity Space</h2>
-            <p class="muted">Each point is a WAV track projected into a 2D feature space.</p>
+            <p class="muted">An axis-free projection where each track becomes a navigable star.</p>
           </div>
           <span id="statusPill" class="status-pill">Loading…</span>
         </div>
-        <div id="projectionChart" class="chart"></div>
+        <div class="chart-frame">
+          <div class="chart-cosmic-glow"></div>
+          <div id="projectionChart" class="chart"></div>
+        </div>
       </section>
 
       <aside class="panel side-panel">
         <div class="panel-header compact">
           <div>
-            <h2 id="detailTitle">Select a track</h2>
-            <p id="detailSubtitle" class="muted">Click any point in the map to inspect it.</p>
+            <h2 id="detailTitle">Exploration standby</h2>
+            <p id="detailSubtitle" class="muted">
+              Select a star to open its dynamic detail panel, play the audio automatically, and reveal its constellation.
+            </p>
           </div>
+          <button id="clearSelectionButton" class="icon-button" type="button" aria-label="Clear selection" title="Clear selection">
+            ✕
+          </button>
         </div>
 
-        <audio id="audioPlayer" controls preload="none"></audio>
-
-        <section class="detail-block">
-          <h3>Track metrics</h3>
-          <div id="metricsGrid" class="metrics-grid empty-state">No track selected yet.</div>
+        <section class="detail-overview">
+          <audio id="audioPlayer" controls preload="none"></audio>
+          <div class="empty-hint" id="emptyHint">
+            No track selected. The universe remains fully visible until you focus on a star.
+          </div>
         </section>
 
-        <section class="detail-block">
-          <h3>Constellation preview</h3>
-          <canvas id="constellationCanvas" width="460" height="220"></canvas>
-        </section>
+        <div id="detailStack" class="detail-stack is-hidden" aria-hidden="true">
+          <details class="detail-block detail-collapsible" id="metricsPanel">
+            <summary>
+              <span>Track metrics</span>
+              <span class="summary-meta">Live panel</span>
+            </summary>
+            <div id="metricsGrid" class="metrics-grid empty-state">No track selected yet.</div>
+          </details>
 
-        <section class="detail-block">
-          <h3>Nearest neighbors</h3>
-          <div id="neighborsList" class="neighbors-list empty-state">No neighbors available.</div>
-        </section>
+          <details class="detail-block detail-collapsible" id="constellationPanel">
+            <summary>
+              <span>Constellation preview</span>
+              <span class="summary-meta">Spectral peaks</span>
+            </summary>
+            <div class="constellation-shell">
+              <canvas id="constellationCanvas" width="460" height="220"></canvas>
+            </div>
+          </details>
+        </div>
       </aside>
     </main>
   </div>
