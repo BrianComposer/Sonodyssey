@@ -284,4 +284,14 @@ Released under the MIT License.
 
 ## Author
 
-**Santi Perez**
+Brian Martínez-Rodríguez
+
+GitHub: https://github.com/BrianComposer
+
+Email: info@brianmartinez.music
+
+Web: www.brianmartinez.music
+
+## License
+
+MIT License.
