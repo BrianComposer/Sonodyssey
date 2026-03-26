@@ -32,13 +32,6 @@ Thumbs.db
 # Logs
 *.log
 
-# Outputs (generated artifacts)
-outputs/
-!outputs/.gitkeep
-
-# Data (local corpora)
-data/
-!data/.gitkeep
 
 # Audio files (safety)
 *.wav
