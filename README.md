@@ -1,6 +1,113 @@
-# Sonodyssey
+# Sonodyssey — Travel Through the Space of Music
 
-**Sonodyssey** is a professional base project for Music Information Retrieval workflows built around raw `.wav` files. It indexes local audio, extracts compact MIR descriptors, projects tracks into a 2D similarity space, serves an interactive browser demo, and exposes a clean FastAPI backend running on **Uvicorn**.
+Sonodyssey transforms audio collections into an explorable **cosmic similarity space**, where each track becomes a star and relationships between sounds form dynamic constellations. Built for music intelligence, MIR research, and creative exploration, it allows users to navigate large audio corpora intuitively and interactively.
+
+
+## Core Experience
+
+Navigate a universe of sound where:
+
+- Each **node (star)** represents a WAV track
+- Spatial proximity encodes **acoustic similarity**
+- Connections form **local constellations of related sounds**
+- Users can **listen, inspect, and analyze** tracks in real time
+
+The system blends **signal processing, embedding projection, and interactive visualization** into a seamless experience.
+
+---
+
+## Similarity Space
+
+The main interface is a fully interactive 2D projection of the audio embedding space. Tracks are distributed to maximize spatial coverage and reveal structural clusters in the dataset.
+
+![Similarity Space](doc/images/panelmain.jpg)
+
+Users can:
+- Zoom and pan smoothly across the space
+- Identify clusters of stylistically similar audio
+- Click on any node to activate detailed inspection
+- Observe global structure emerging from local relationships
+
+This view is backed by dimensionality reduction over high-dimensional feature embeddings.
+
+---
+
+## Dynamic Constellations
+
+Selecting a track reveals its **local neighborhood graph**, forming a constellation of similar **music styles**.
+
+![Constellation Example 1](doc/images/constellation1.jpg)
+![Constellation Example 2](doc/images/constellation2.jpg)
+![Constellation Example 3](doc/images/constellation3.jpg)
+
+Key properties:
+- Edges represent **nearest-neighbor relationships**
+- Visual intensity encodes **similarity strength**
+- Layout preserves **local topology**
+- Animated transitions emphasize structure emergence
+
+This enables rapid auditory discovery and contextual understanding of each track.
+
+---
+
+## Interactive Track Panel
+
+Each selected track opens a **inspection panel**, providing playback and analytical features.
+
+![Track Panel](doc/images/panelmetrics.jpg)
+
+### Features
+
+- **Instant audio playback**
+- **Dynamic waveform progress**
+- **Volume control**
+- High-level descriptors extracted from the signal:
+  - Tempo (BPM)
+  - RMS energy
+  - Spectral centroid
+  - Spectral bandwidth
+  - Zero-crossing rate
+  - Peak density
+
+---
+
+## Spectral Fingerprint Visualization
+
+Each track includes a **constellation preview of spectral peaks**, representing its time-frequency structure.
+
+- Captures the **distribution of dominant frequencies over time**
+- Provides a **signature-like fingerprint** of the sound
+- Useful for similarity validation and MIR analysis
+
+---
+
+## Underlying Technology
+
+Sonodyssey is built on a robust MIR pipeline:
+
+- **Feature Extraction**
+  - Spectral descriptors
+  - Temporal statistics
+  - Energy-based features
+
+- **Embedding Construction**
+  - High-dimensional vector representation per track
+
+- **Normalization & Scaling**
+  - Standardization across dataset
+
+- **Projection**
+  - Dimensionality reduction (e.g., PCA / UMAP)
+
+- **Similarity Computation**
+  - Euclidean distance matrix
+  - k-NN graph construction
+
+- **Frontend Rendering**
+  - Canvas-based real-time visualization
+  - Animated graph transitions
+  - GPU-friendly rendering patterns
+
 
 ---
 
@@ -41,6 +148,7 @@ Once the server is running, the app provides a polished workflow:
 5. Listen to the selected track
 6. Inspect MIR metrics and a spectral constellation preview
 7. Jump to the nearest neighbors from the side panel
+
 
 ---
 
@@ -230,55 +338,6 @@ The current base project uses **PCA** for a deterministic and lightweight 2D pro
 
 Nearest neighbors are computed with Euclidean distance in the standardized feature space. This is simple, fast, and easy to explain in interviews and documentation.
 
----
-
-## Development notes
-
-### Run tests
-
-```bash
-pytest
-```
-
-### Lint with Ruff
-
-```bash
-ruff check .
-```
-
----
-
-## Ideas for the next iteration
-
-This repository is a strong base, but it is intentionally extensible. High-value upgrades include:
-
-- drag-and-drop query-by-example with uploaded audio
-- UMAP or t-SNE projection for more expressive layouts
-- FAISS or Annoy for large-scale nearest-neighbor search
-- waveform and spectrogram panels in the frontend
-- contrastive learning for better audio embeddings
-- cover-song retrieval mode
-- playlist region labeling and cluster summaries
-- Docker deployment
-- CI pipeline with GitHub Actions
-
----
-
-## Suggested GitHub positioning
-
-A strong subtitle for the repo is:
-
-> **Interactive music similarity map from raw WAV audio using FastAPI, Uvicorn, librosa, and browser-based visualization.**
-
-A strong one-line pitch for recruiters is:
-
-> Built an end-to-end MIR demo that indexes WAV audio, computes compact descriptors, projects tracks into an interactive similarity space, and serves real-time exploration through a production-style API.
-
----
-
-## License
-
-Released under the MIT License.
 
 ---
 
